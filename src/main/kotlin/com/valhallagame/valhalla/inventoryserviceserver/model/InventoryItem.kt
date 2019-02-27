@@ -3,7 +3,7 @@ package com.valhallagame.valhalla.inventoryserviceserver.model
 import javax.persistence.*
 
 @Entity
-@Table(name = "bank_item")
+@Table(name = "inventory_item")
 data class InventoryItem(
         @Id
         @SequenceGenerator(name = "inventory_item_inventory_item_id_seq", sequenceName = "inventory_item_inventory_item_id_seq", allocationSize = 1)
