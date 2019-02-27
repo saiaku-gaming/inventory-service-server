@@ -18,7 +18,7 @@ class InventoryConsumer
         private val logger = LoggerFactory.getLogger(InventoryConsumer::class.java)
     }
 
-    @RabbitListener(queues = ["#{bankCharacterDeleteQueue.name}"])
+    @RabbitListener(queues = ["#{inventoryCharacterDeleteQueue.name}"])
     fun receivedCharacterDeleteNotification(notificationMessage: NotificationMessage) {
         logger.info("Received Character Delete Notification: {}", notificationMessage)
 

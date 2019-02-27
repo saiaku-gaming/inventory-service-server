@@ -1,7 +1,7 @@
 package com.valhallagame.valhalla.bankserviceserver
 
-import com.valhallagame.valhalla.bankserviceserver.repository.BankItemRepository
-import com.valhallagame.valhalla.bankserviceserver.service.BankItemService
+import com.valhallagame.valhalla.inventoryserviceserver.repository.InventoryItemRepository
+import com.valhallagame.valhalla.inventoryserviceserver.service.InventoryItemService
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.TestConfiguration
@@ -12,18 +12,18 @@ import org.springframework.test.context.junit4.SpringRunner
 
 @RunWith(SpringRunner::class)
 @ActiveProfiles("test")
-class BankServiceTest {
+class InventoryServiceTest {
     @TestConfiguration
     class BankItemServiceTestContextConfiguration {
         @Bean
-        fun bankItemService(): BankItemService {
-            return BankItemService()
+        fun bankItemService(): InventoryItemService {
+            return InventoryItemService()
         }
     }
 
     @Autowired
-    private lateinit var bankItemService: BankItemService
+    private lateinit var bankItemService: InventoryItemService
 
     @MockBean
-    private lateinit var bankItemRepository: BankItemRepository
+    private lateinit var bankItemRepository: InventoryItemRepository
 }
