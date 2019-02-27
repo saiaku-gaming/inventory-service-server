@@ -1,8 +1,8 @@
 package com.valhallagame.valhalla.bankserviceserver
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.valhallagame.valhalla.bankserviceserver.controller.BankController
-import com.valhallagame.valhalla.bankserviceserver.service.BankItemService
+import com.valhallagame.valhalla.inventoryserviceserver.controller.InventoryController
+import com.valhallagame.valhalla.inventoryserviceserver.service.InventoryItemService
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,14 +13,14 @@ import org.springframework.test.context.junit4.SpringRunner
 import org.springframework.test.web.servlet.MockMvc
 
 @RunWith(SpringRunner::class)
-@WebMvcTest(BankController::class)
+@WebMvcTest(InventoryController::class)
 @ActiveProfiles("test")
-class BankControllerTest {
+class InventoryControllerTest {
     @Autowired
     private lateinit var mvc: MockMvc
 
     @MockBean
-    private lateinit var bankItemService: BankItemService
+    private lateinit var bankItemService: InventoryItemService
 
     private val objectMapper = ObjectMapper()
 
