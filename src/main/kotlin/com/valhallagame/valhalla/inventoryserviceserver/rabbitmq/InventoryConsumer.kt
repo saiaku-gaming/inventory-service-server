@@ -27,7 +27,7 @@ class InventoryConsumer
     @RabbitListener(queues = ["#{inventoryCharacterDeleteQueue.name}"])
     fun receivedCharacterDeleteNotification(notificationMessage: NotificationMessage) {
         MDC.put("service_name", appName)
-        MDC.put("request_id", UUID.randomUUID().toString())
+        MDC.put("request_id", notificationMessage.data["requestId"] as String? ?: UUID.randomUUID().toString())
 
         logger.info("Received Character Delete Notification: {}", notificationMessage)
 
