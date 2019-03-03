@@ -5,7 +5,7 @@
 
     <groupId>com.valhallagame.valhalla</groupId>
     <artifactId>inventory-service-server</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.5</version>
     <packaging>jar</packaging>
 
     <name>inventory-service-server</name>
