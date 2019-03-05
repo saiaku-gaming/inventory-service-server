@@ -34,6 +34,8 @@ class InventoryConsumer
         try {
             val characterName = notificationMessage.data["characterName"] as String
             inventoryItemService.deleteInventoryItemByCharacterName(characterName)
+        } catch (e: Exception) {
+            logger.error("Error while processing Character Delete notification", e)
         } finally {
             MDC.clear()
         }
