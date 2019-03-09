@@ -30,15 +30,13 @@ class InventoryItemService {
     fun setInventoryContents(characterName: String, inventoryItems: List<BankItemWrapper>): List<InventoryItem> {
         logger.info("Setting inventory content for {} to {}", characterName, inventoryItems)
         inventoryItemRepository.deleteInventoryItemByCharacterName(characterName)
-        val createdItems = mutableListOf<InventoryItem>()
-        inventoryItems.forEach {
-            createdItems.add(createInventoryItem(characterName, it.itemName, it.positionX, it.positionY))
-        }
 
-        return createdItems
+        return inventoryItems.map {
+            createInventoryItem(characterName, it.itemName, it.positionX, it.positionY, it.metaData)
+        }
     }
 
-    fun createInventoryItem(characterName: String, itemName: String, positionX: Int, positionY: Int): InventoryItem {
+    fun createInventoryItem(characterName: String, itemName: String, positionX: Int, positionY: Int, metaData: String?): InventoryItem {
         logger.info("Creating inventory item for {} with name {} and position X: {}, Y: {}", characterName, itemName, positionX, positionY)
 
         return inventoryItemRepository.save(
@@ -46,7 +44,8 @@ class InventoryItemService {
                         characterName = characterName,
                         itemName = itemName,
                         positionX = positionX,
-                        positionY = positionY
+                        positionY = positionY,
+                        metaData = metaData
                 )
         )
     }
@@ -59,6 +58,7 @@ class InventoryItemService {
     data class BankItemWrapper(
         val itemName: String,
         val positionX: Int,
-        val positionY: Int
+        val positionY: Int,
+        val metaData: String?
     )
 }

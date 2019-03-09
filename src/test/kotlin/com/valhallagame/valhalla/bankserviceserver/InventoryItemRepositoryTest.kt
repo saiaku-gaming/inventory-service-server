@@ -25,11 +25,11 @@ class InventoryItemRepositoryTest {
 
     @Test
     fun deleteBankItemByCharacterName() {
-        val bankItem1 = InventoryItem(characterName = "nisse", itemName = "sword", positionX = 0, positionY = 0)
-        val bankItem2 = InventoryItem(characterName = "hult", itemName = "sword", positionX = 0, positionY = 0)
-        val bankItem3 = InventoryItem(characterName = "nisse", itemName = "apple", positionX = 0, positionY = 1)
-        val bankItem4 = InventoryItem(characterName = "nisse", itemName = "bow", positionX = 0, positionY = 2)
-        val bankItem5 = InventoryItem(characterName = "lisa", itemName = "sword", positionX = 0, positionY = 0)
+        val bankItem1 = InventoryItem(characterName = "nisse", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
+        val bankItem2 = InventoryItem(characterName = "hult", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
+        val bankItem3 = InventoryItem(characterName = "nisse", itemName = "apple", positionX = 0, positionY = 1, metaData = null)
+        val bankItem4 = InventoryItem(characterName = "nisse", itemName = "bow", positionX = 0, positionY = 2, metaData = null)
+        val bankItem5 = InventoryItem(characterName = "lisa", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
 
         entityManager.persist(bankItem1)
         entityManager.persist(bankItem2)
@@ -50,11 +50,11 @@ class InventoryItemRepositoryTest {
 
     @Test
     fun deleteBankItemByPosition() {
-        val bankItem1 = InventoryItem(characterName = "nisse", itemName = "sword", positionX = 0, positionY = 0)
-        val bankItem2 = InventoryItem(characterName = "hult", itemName = "sword", positionX = 0, positionY = 0)
-        val bankItem3 = InventoryItem(characterName = "nisse", itemName = "apple", positionX = 0, positionY = 1)
-        val bankItem4 = InventoryItem(characterName = "nisse", itemName = "bow", positionX = 0, positionY = 2)
-        val bankItem5 = InventoryItem(characterName = "lisa", itemName = "sword", positionX = 0, positionY = 0)
+        val bankItem1 = InventoryItem(characterName = "nisse", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
+        val bankItem2 = InventoryItem(characterName = "hult", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
+        val bankItem3 = InventoryItem(characterName = "nisse", itemName = "apple", positionX = 0, positionY = 1, metaData = null)
+        val bankItem4 = InventoryItem(characterName = "nisse", itemName = "bow", positionX = 0, positionY = 2, metaData = null)
+        val bankItem5 = InventoryItem(characterName = "lisa", itemName = "sword", positionX = 0, positionY = 0, metaData = null)
 
         entityManager.persist(bankItem1)
         entityManager.persist(bankItem2)

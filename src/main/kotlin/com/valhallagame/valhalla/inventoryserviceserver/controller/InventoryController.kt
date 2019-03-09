@@ -30,31 +30,31 @@ class InventoryController {
 
     @PostMapping("/get-inventory-items")
     @ResponseBody
-    fun getBankItems(@Valid @RequestBody input: GetInventoryItemsParameter): ResponseEntity<JsonNode> {
+    fun getInventoryItems(@Valid @RequestBody input: GetInventoryItemsParameter): ResponseEntity<JsonNode> {
         logger.info("Get Inventory Item called with {}", input)
         return JS.message(HttpStatus.OK, inventoryItemService.getInventoryItems(input.characterName))
     }
 
     @PostMapping("/add-inventory-item")
     @ResponseBody
-    fun addBankItem(@Valid @RequestBody input: AddInventoryItemParameter): ResponseEntity<JsonNode> {
+    fun addInventoryItem(@Valid @RequestBody input: AddInventoryItemParameter): ResponseEntity<JsonNode> {
         logger.info("Add Inventory Item called with {}", input)
-        return JS.message(HttpStatus.OK, inventoryItemService.createInventoryItem(input.characterName, input.itemName, input.positionX, input.positionY))
+        return JS.message(HttpStatus.OK, inventoryItemService.createInventoryItem(input.characterName, input.itemName, input.positionX, input.positionY, input.metaData))
     }
 
     @PostMapping("delete-inventory-item")
     @ResponseBody
-    fun deleteBankItem(@Valid @RequestBody input: DeleteInventoryItemParameter): ResponseEntity<JsonNode> {
+    fun deleteInventoryItem(@Valid @RequestBody input: DeleteInventoryItemParameter): ResponseEntity<JsonNode> {
         logger.info("Delete Inventory Item called with {}", input)
         return JS.message(HttpStatus.OK, "Deleted ${inventoryItemService.deleteInventoryItemByPosition(input.characterName, input.positionX, input.positionY)} items")
     }
 
     @PostMapping("/set-inventory-contents")
     @ResponseBody
-    fun setBankContents(@Valid @RequestBody input: SetInventoryItemContentsParameter): ResponseEntity<JsonNode> {
+    fun setInventoryContents(@Valid @RequestBody input: SetInventoryItemContentsParameter): ResponseEntity<JsonNode> {
         logger.info("Set Inventory Item called with {}", input)
         return JS.message(HttpStatus.OK, inventoryItemService.setInventoryContents(input.characterName, input.items.map {
-            InventoryItemService.BankItemWrapper(it.itemName, it.positionX, it.positionY)
+            InventoryItemService.BankItemWrapper(it.itemName, it.positionX, it.positionY, it.metaData)
         }))
     }
 }

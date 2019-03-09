@@ -21,5 +21,8 @@ data class InventoryItem(
         val positionX: Int,
 
         @Column(name = "position_y")
-        val positionY: Int
+        val positionY: Int,
+
+        @Column(name = "meta_data")
+        val metaData: String?
 )
