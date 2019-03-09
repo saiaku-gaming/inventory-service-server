@@ -1,0 +1,1 @@
+ALTER TABLE inventory_item RENAME COLUMN meta_data TO item_meta_data;
