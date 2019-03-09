@@ -32,12 +32,12 @@ class InventoryItemService {
         inventoryItemRepository.deleteInventoryItemByCharacterName(characterName)
 
         return inventoryItems.map {
-            createInventoryItem(characterName, it.itemName, it.positionX, it.positionY, it.metaData)
+            createInventoryItem(characterName, it.itemName, it.positionX, it.positionY, it.itemMetaData)
         }
     }
 
-    fun createInventoryItem(characterName: String, itemName: String, positionX: Int, positionY: Int, metaData: String?): InventoryItem {
-        logger.info("Creating inventory item for {} with name {} and position X: {}, Y: {}", characterName, itemName, positionX, positionY)
+    fun createInventoryItem(characterName: String, itemName: String, positionX: Int, positionY: Int, itemMetaData: String?): InventoryItem {
+        logger.info("Creating inventory item for {} with name {} and position X: {}, Y: {}, Item Meta Data: {}", characterName, itemName, positionX, positionY, itemMetaData)
 
         return inventoryItemRepository.save(
                 InventoryItem(
@@ -45,7 +45,7 @@ class InventoryItemService {
                         itemName = itemName,
                         positionX = positionX,
                         positionY = positionY,
-                        metaData = metaData
+                        itemMetaData = itemMetaData
                 )
         )
     }
@@ -59,6 +59,6 @@ class InventoryItemService {
         val itemName: String,
         val positionX: Int,
         val positionY: Int,
-        val metaData: String?
+        val itemMetaData: String?
     )
 }

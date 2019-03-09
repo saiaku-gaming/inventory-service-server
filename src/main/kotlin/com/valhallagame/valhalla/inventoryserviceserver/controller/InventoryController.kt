@@ -39,7 +39,7 @@ class InventoryController {
     @ResponseBody
     fun addInventoryItem(@Valid @RequestBody input: AddInventoryItemParameter): ResponseEntity<JsonNode> {
         logger.info("Add Inventory Item called with {}", input)
-        return JS.message(HttpStatus.OK, inventoryItemService.createInventoryItem(input.characterName, input.itemName, input.positionX, input.positionY, input.metaData))
+        return JS.message(HttpStatus.OK, inventoryItemService.createInventoryItem(input.characterName, input.itemName, input.positionX, input.positionY, input.itemMetaData))
     }
 
     @PostMapping("delete-inventory-item")
@@ -54,7 +54,7 @@ class InventoryController {
     fun setInventoryContents(@Valid @RequestBody input: SetInventoryItemContentsParameter): ResponseEntity<JsonNode> {
         logger.info("Set Inventory Item called with {}", input)
         return JS.message(HttpStatus.OK, inventoryItemService.setInventoryContents(input.characterName, input.items.map {
-            InventoryItemService.BankItemWrapper(it.itemName, it.positionX, it.positionY, it.metaData)
+            InventoryItemService.BankItemWrapper(it.itemName, it.positionX, it.positionY, it.itemMetaData)
         }))
     }
 }
