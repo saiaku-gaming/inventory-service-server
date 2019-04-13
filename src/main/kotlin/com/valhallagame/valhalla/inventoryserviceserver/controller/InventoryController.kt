@@ -46,7 +46,8 @@ class InventoryController {
     @ResponseBody
     fun deleteInventoryItem(@Valid @RequestBody input: DeleteInventoryItemParameter): ResponseEntity<JsonNode> {
         logger.info("Delete Inventory Item called with {}", input)
-        return JS.message(HttpStatus.OK, "Deleted ${inventoryItemService.deleteInventoryItemByPosition(input.characterName, input.positionX, input.positionY)} items")
+        return if(inventoryItemService.deleteInventoryItemByPosition(input.characterName, input.positionX, input.positionY) > 0) JS.message(HttpStatus.OK, "Item deleted")
+            else JS.message(HttpStatus.NOT_FOUND, "Unable to find item to delete")
     }
 
     @PostMapping("/set-inventory-contents")
