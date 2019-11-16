@@ -39,6 +39,8 @@ class InventoryItemService {
     fun createInventoryItem(characterName: String, itemName: String, positionX: Int, positionY: Int, itemMetaData: String?): InventoryItem {
         logger.info("Creating inventory item for {} with name {} and position X: {}, Y: {}, Item Meta Data: {}", characterName, itemName, positionX, positionY, itemMetaData)
 
+        deleteInventoryItemByPosition(characterName, positionX, positionY)
+
         return inventoryItemRepository.save(
                 InventoryItem(
                         characterName = characterName,
